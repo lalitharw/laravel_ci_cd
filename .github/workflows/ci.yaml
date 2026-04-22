@@ -40,5 +40,6 @@ jobs:
   production:
     runs-on: ubuntu-latest
 
-    steps: Echo production
-    run: echo "Lalit Harwate"
+    steps: 
+    - name: Run production
+      run: echo "Lalit Harwate"
