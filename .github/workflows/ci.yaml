@@ -5,7 +5,6 @@ on:
     branches:
       - main
 
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,13 +20,16 @@ jobs:
         extensions: mbstring, xml, curl
     
     - name: Copy .env
-      run: cp .env.example .env
+      run: cp .env.testing .env
 
     - name: Install Dependencies
       run: composer install --no-interaction --prefer-dist --optimize-autoloader
 
+    - name: Create Sqlite
+      run: touch database/database.sqlite
+      
     - name: Generate App Key
-      run: php artisan key:Generate
+      run: php artisan key:generate
 
     - name: Run Migrations
       run: php artisan migrate --force
