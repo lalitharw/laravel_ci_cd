@@ -46,4 +46,9 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.PORTS }}
-        script : whoami
+        script : |
+        cd /var/www/laravel_ci_cd
+        git pull origin main
+        composer install --no-dev --no-interaction --prefer_dist --optimize-autoloader
+        php artisan migrate --force
+        php artisan optimize
