@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps: 
-    - name: Execute Remote SSH Command using Password
+    - name: Execute Remote SSH Command using KEY
       uses: appleboy/ssh-action@v1
       with:
         host: ${{ secrets.HOST }}
