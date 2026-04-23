@@ -39,5 +39,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps: 
-    - name: Run production
-      run: echo "Lalit Harwate"
+    - name: Execute Remote SSH Command using Password
+      uses: appleboy/ssh-action@v1
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.PORTS }}
+        script : whoami
